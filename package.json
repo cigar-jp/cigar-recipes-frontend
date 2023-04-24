@@ -1,5 +1,5 @@
 {
-  "name": "cigar-recieps-frontend",
+  "name": "cigar-recipes-frontend",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -18,5 +18,9 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "typescript": "5.0.4"
+  },
+  "devDependencies": {
+    "eslint-plugin-prettier": "^4.2.1",
+    "prettier": "^2.8.8"
   }
 }
