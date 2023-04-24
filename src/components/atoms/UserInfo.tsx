@@ -1,4 +1,4 @@
-import { useQueryUser } from '@/hooks/userQueryUser'
+import { useQueryUser } from '@/hooks/useQueryUser'
 import { Loader } from '@mantine/core'
 
 export const UserInfo = () => {
