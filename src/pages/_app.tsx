@@ -15,17 +15,17 @@ const queryClient = new QueryClient({
   }
 })
 
-export default function App({ Component, pageProps }: AppProps) {
+function App({ Component, pageProps }: AppProps) {
   axios.defaults.withCredentials = true
 
   useEffect(() => {
     const getCsrfToken = async () => {
       const { data } = await axios.get(
-        `${process.env.NEXT_PUBLIC_API_URL}/auth/csrf-token`
+        `${process.env.NEXT_PUBLIC_API_URL}/auth/csrf`
       )
       axios.defaults.headers.common['csrf-token'] = data.csrfToken
-      getCsrfToken()
     }
+    getCsrfToken()
   }, [])
 
   return (
@@ -35,13 +35,14 @@ export default function App({ Component, pageProps }: AppProps) {
         withNormalizeCSS
         theme={{
           colorScheme: 'light',
-          fontFamily: 'Verdana ,sans-serif'
+          fontFamily: 'Verdana, sans-serif'
         }}
       >
         <Component {...pageProps} />
       </MantineProvider>
-
       <ReactQueryDevtools />
     </QueryClientProvider>
   )
 }
+
+export default App
