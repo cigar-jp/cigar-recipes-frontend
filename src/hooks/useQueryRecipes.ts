@@ -3,12 +3,12 @@ import axios from 'axios'
 import { useQuery } from '@tanstack/react-query'
 import { Recipe } from '@prisma/client'
 
-export const useQueryUser = () => {
+export const useQueryRecipes = () => {
   const router = useRouter()
 
   const getRecipes = async () => {
     const { data } = await axios.get<Recipe[]>(
-      `${process.env.NEXT_PUBLIC_API_URL}/recipes`
+      `${process.env.NEXT_PUBLIC_API_URL}/recipe`
     )
     return data
   }

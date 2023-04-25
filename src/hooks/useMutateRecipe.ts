@@ -10,6 +10,7 @@ export const useMutateRecipe = () => {
   const router = useRouter()
   const reset = useStore((state) => state.resetEditedRecipe)
 
+  // レシピ作成
   const createRecipeMutation = useMutation(
     async (recipe: Omit<EditedRecipe, 'id'>) => {
       const res = await axios.post(
@@ -37,6 +38,7 @@ export const useMutateRecipe = () => {
     }
   )
 
+  // レシピ更新
   const updateRecipeMutation = useMutation(
     async (recipe: EditedRecipe) => {
       const res = await axios.patch(
@@ -67,6 +69,7 @@ export const useMutateRecipe = () => {
     }
   )
 
+  // レシピ削除
   const deleteRecipeMutation = useMutation(
     async (id: number) => {
       await axios.delete(`${process.env.NEXT_PUBLIC_API_URL}/recipe/${id}`)
