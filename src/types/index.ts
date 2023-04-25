@@ -6,6 +6,6 @@ export type AuthForm = {
 export type EditedRecipe = {
   id: number
   name: string
-  namekana: string
+  nameKana: string
   genre: 'meat' | 'fish' | 'salad'
 }
