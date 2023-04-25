@@ -1,8 +1,6 @@
 import { FormEvent, useState } from 'react'
 import { TextInput, Button, Center, Select } from '@mantine/core'
-import { IconDatabase, IconSearch } from '@tabler/icons'
-import useStore from '@/store'
-import { useMutateRecipe } from '@/hooks/useMutateRecipe'
+import { IconSearch } from '@tabler/icons'
 import { useQueryRecipes } from '@/hooks/useQueryRecipes'
 
 interface FilterParams {
@@ -17,8 +15,6 @@ export const RecipeSearch = () => {
     nameKana: '',
     genre: ''
   })
-
-  const { data: recipes, isError } = useQueryRecipes(searchParams)
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
