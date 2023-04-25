@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import {
   createStyles,
   Table,
@@ -123,6 +123,12 @@ export const RecipesTable = () => {
   const [sortBy, setSortBy] = useState<keyof RowData | null>(null)
   const [reverseSortDirection, setReverseSortDirection] = useState(false)
 
+  useEffect(() => {
+    setSortedData(
+      sortData(rowData, { sortBy, reversed: reverseSortDirection, search })
+    )
+  }, [rowData, search, sortBy, reverseSortDirection])
+
   const setSorting = (field: keyof RowData) => {
     const reversed = field === sortBy ? !reverseSortDirection : false
     setReverseSortDirection(reversed)
@@ -205,6 +211,7 @@ export const RecipesTable = () => {
             </Th>
           </tr>
         </thead>
+
         <tbody>
           {rows && rows.length > 0 ? (
             rows
