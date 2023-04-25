@@ -1,38 +1,55 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## これはなに？
 
-## Getting Started
+料理成分管理アプリの frontend リポジトリです
 
-First, run the development server:
+## デプロイ環境
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+https://cigar-recipes-frontend.vercel.app
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## ログイン情報
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+email: user1@test.com
+password: user1
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+## 仕様
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+- 料理は、以下の項目を持っています。
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+  - 料理名
+  - 料理名(カナ)
+  - ジャンル (肉料理 | 魚料理 | サラダ)
+  - 材料 (複数)
 
-## Learn More
+- 材料は、以下の項目を持っています。
+  - 材料名
+  - 材料名(カナ)
+  - 値段
+  - カロリー
+  - 成分詳細 (テキスト)
 
-To learn more about Next.js, take a look at the following resources:
+## 実装した機能
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- ユーザーの CRUD
+- 料理（レシピ）の CRUD
+- 材料の GET
+- 料理の並び替え機能
+- 料理の絞り込み機能
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## 実装にあたり注力したこと
 
-## Deploy on Vercel
+- UI を効率的に実装できるよう、UI ライブラリ mantine UI を使用しました。
+  mantine UI はあまり使ったことがなかったので、勉強しながら使ってみました。
+- 一週間の期限の中で、Nest.JS / prisma の組み合わせで環境構築から作ることが初めてだったため、
+  バックエンド開発に時間を集中して使いました。
+  そのため、絞り込み機能、並び替え機能を Mantine Table Sort を採用しました。
+  料理一覧と表記が被ってしまい、ユーザーフレンドリ-な UI に欠けるため、今後 UI は整理したいと思います。
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 今後のアイデア
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+（一週間の期限の中で削った機能や、もう少し時間をかけて追加していきたいこと）
+
+- UI を綺麗に整理する
+- 材料の CRUD
+- ユーザーごとに料理、材料を出し分ける
+- 料理のお気に入り機能
+- tailwind -> styled コンポーネントに置き換え
