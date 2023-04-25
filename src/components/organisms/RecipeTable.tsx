@@ -190,7 +190,7 @@ export const RecipesTable = () => {
           </tr>
         </thead>
         <tbody>
-          {rows.length > 0 ? (
+          {rows && rows.length > 0 ? (
             rows
           ) : (
             <tr>
