@@ -1,5 +1,5 @@
 import { List, ThemeIcon, Loader } from '@mantine/core'
-import { IconCircleDashed } from '@tabler/icons'
+import { IconNotebook } from '@tabler/icons'
 import { useQueryRecipes } from '@/hooks/useQueryRecipes'
 import { RecipeItem } from '../atoms/RecipeItem'
 
@@ -9,11 +9,11 @@ export const RecipeList = () => {
   return (
     <List
       my="lg"
-      spacing="sm"
+      spacing="md"
       size="sm"
       icon={
         <ThemeIcon color="cyan" size={24} radius="xl">
-          <IconCircleDashed size={16} />
+          <IconNotebook size={16} />
         </ThemeIcon>
       }
     >

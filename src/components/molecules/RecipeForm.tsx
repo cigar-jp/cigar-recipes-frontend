@@ -8,8 +8,10 @@ export const RecipeForm = () => {
   const { editedRecipe } = useStore()
   const update = useStore((state) => state.updateEditedRecipe)
   const { createRecipeMutation, updateRecipeMutation } = useMutateRecipe()
+
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+
     if (editedRecipe.id === 0)
       createRecipeMutation.mutate({
         name: editedRecipe.name,
@@ -27,7 +29,7 @@ export const RecipeForm = () => {
   }
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="w-4/12">
         <TextInput
           mt="md"
           placeholder="ミートパイ"
@@ -35,10 +37,11 @@ export const RecipeForm = () => {
           value={editedRecipe.name || ''}
           onChange={(e) => update({ ...editedRecipe, name: e.target.value })}
         />
+
         <TextInput
           mt="md"
           placeholder="みーとぱい"
-          label="料理名（かな）"
+          label="料理名（カナ）"
           value={editedRecipe.nameKana || ''}
           onChange={(e) =>
             update({ ...editedRecipe, nameKana: e.target.value })
@@ -51,6 +54,8 @@ export const RecipeForm = () => {
           data={['meat', 'fish', 'salad']}
           placeholder="meat"
           label="ジャンル"
+          value={editedRecipe.genre}
+          onChange={(value) => update({ ...editedRecipe, genre: value || '' })}
         />
 
         <Center mt="lg">

@@ -7,6 +7,8 @@ import { UserInfo } from '@/components/atoms/UserInfo'
 import { useQueryClient } from '@tanstack/react-query'
 import { RecipeForm } from '@/components/molecules/RecipeForm'
 import { RecipeList } from '@/components/organisms/RecipeList'
+import { Divider } from '@mantine/core'
+import { RecipesTable } from '@/components/organisms/RecipeTable'
 
 const Recipes: NextPage = () => {
   const router = useRouter()
@@ -21,16 +23,30 @@ const Recipes: NextPage = () => {
 
   return (
     <Layout title="Recipes List">
-      <LogoutIcon
-        className="mb-6 h-6 w-6 cursor-pointer text-blue-500"
-        onClick={signout}
-      />
+      <div className="flex w-full items-center justify-between">
+        <div
+          className="flex cursor-pointer items-center text-blue-500"
+          onClick={signout}
+        >
+          <span className="mr-2">サインアウト</span>
 
-      <UserInfo />
+          <LogoutIcon className="h-6 w-6" />
+        </div>
+
+        <UserInfo />
+      </div>
 
       <RecipeForm />
 
+      <Divider my="xl" className="w-8/12" />
+
+      {/* <RecipeSearch />  */}
+
       <RecipeList />
+
+      <Divider className="my-24 w-8/12" />
+
+      <RecipesTable />
     </Layout>
   )
 }

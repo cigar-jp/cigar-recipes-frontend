@@ -12,7 +12,7 @@ export const Layout: FC<Props> = ({ children, title = 'cigar recipe' }) => {
       <Head>
         <title>{title}</title>
       </Head>
-      <main className="flex w-screen flex-1 flex-col items-center justify-center">
+      <main className="flex w-screen flex-col items-center justify-center p-16">
         {children}
       </main>
     </div>
