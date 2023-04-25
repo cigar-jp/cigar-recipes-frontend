@@ -7,5 +7,5 @@ export type EditedRecipe = {
   id: number
   name: string
   nameKana: string
-  genre: 'meat' | 'fish' | 'salad'
+  genre: string
 }
