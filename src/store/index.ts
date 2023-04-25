@@ -8,7 +8,15 @@ type State = {
 }
 
 const useStore = create<State>((set) => ({
-  editedRecipe: { id: 0, name: '', nameKana: '', genre: 'meat' },
+  editedRecipe: {
+    id: 0,
+    name: '',
+    nameKana: '',
+    genre: 'meat',
+    price: 0,
+    kcal: 0,
+    ingredientIds: []
+  },
 
   updateEditedRecipe: (payload) =>
     set({
@@ -16,12 +24,25 @@ const useStore = create<State>((set) => ({
         id: payload.id,
         name: payload.name,
         nameKana: payload.nameKana,
-        genre: payload.genre
+        genre: payload.genre,
+        price: payload.price,
+        kcal: payload.kcal,
+        ingredientIds: payload.ingredientIds
       }
     }),
 
   resetEditedRecipe: () =>
-    set({ editedRecipe: { id: 0, name: '', nameKana: '', genre: 'meat' } })
+    set({
+      editedRecipe: {
+        id: 0,
+        name: '',
+        nameKana: '',
+        genre: 'meat',
+        price: 0,
+        kcal: 0,
+        ingredientIds: []
+      }
+    })
 }))
 
 export default useStore

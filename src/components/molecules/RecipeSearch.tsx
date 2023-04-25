@@ -1,7 +1,6 @@
 import { FormEvent, useState } from 'react'
 import { TextInput, Button, Center, Select } from '@mantine/core'
 import { IconSearch } from '@tabler/icons'
-import { useQueryRecipes } from '@/hooks/useQueryRecipes'
 
 interface FilterParams {
   name?: string

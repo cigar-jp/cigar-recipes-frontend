@@ -8,4 +8,7 @@ export type EditedRecipe = {
   name: string
   nameKana: string
   genre: string
+  price: number
+  kcal: number
+  ingredientIds: number[]
 }

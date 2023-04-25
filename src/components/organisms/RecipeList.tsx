@@ -24,6 +24,9 @@ export const RecipeList = () => {
           name={recipe.name}
           nameKana={recipe.nameKana}
           genre={recipe.genre}
+          price={recipe.price}
+          kcal={recipe.kcal}
+          ingredientIds={recipe.ingredientIds}
         />
       ))}
     </List>

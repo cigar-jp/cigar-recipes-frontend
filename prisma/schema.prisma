@@ -8,37 +8,26 @@ datasource db {
 }
 
 model Ingredient {
-  id                  Int                   @id @default(autoincrement())
-  name                String
-  nameKana            String
-  price               Int
-  kcal                Int
-  createdAt           DateTime              @default(now())
-  updatedAt           DateTime
-  RecipeOnIngredients RecipeOnIngredients[]
+  id          Int      @id @default(autoincrement())
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime
+  name        String
+  nameKana    String
+  price       Int
+  kcal        Int
+  description String?
 }
 
 model Recipe {
-  id                  Int                   @id @default(autoincrement())
-  name                String
-  nameKana            String
-  createdAt           DateTime              @default(now())
-  updatedAt           DateTime
-  userId              Int
-  genre               String
-  User                User                  @relation(fields: [userId], references: [id], onDelete: Cascade)
-  RecipeOnIngredients RecipeOnIngredients[]
-}
-
-model RecipeOnIngredients {
-  recipeId     Int
-  ingredientId Int
-  createdAt    DateTime   @default(now())
-  updatedAt    DateTime
-  Ingredient   Ingredient @relation(fields: [ingredientId], references: [id])
-  Recipe       Recipe     @relation(fields: [recipeId], references: [id])
-
-  @@id([recipeId, ingredientId])
+  id            Int      @id @default(autoincrement())
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime
+  name          String
+  nameKana      String
+  genre         Genre
+  price         Int
+  kcal          Int
+  ingredientIds Int[]
 }
 
 model User {
@@ -48,5 +37,10 @@ model User {
   email          String   @unique
   hashedPassword String
   name           String?
-  Recipe         Recipe[]
+}
+
+enum Genre {
+  meat
+  fish
+  salad
 }

@@ -79,7 +79,7 @@ function Th({ children, reversed, sorted, onSort }: ThProps) {
 function filterData(data: RowData[], search: string) {
   const query = search.toLowerCase().trim()
   return data.filter((item) =>
-    keys(data[0]).some((key) => item[key].toLowerCase().includes(query))
+    keys(data[0]).some((key) => String(item[key]).toLowerCase().includes(query))
   )
 }
 
@@ -96,10 +96,10 @@ function sortData(
   return filterData(
     [...data].sort((a, b) => {
       if (payload.reversed) {
-        return b[sortBy].localeCompare(a[sortBy])
+        return String(b[sortBy]).localeCompare(String(a[sortBy]))
       }
 
-      return a[sortBy].localeCompare(b[sortBy])
+      return String(a[sortBy]).localeCompare(String(b[sortBy]))
     }),
     payload.search
   )
@@ -108,8 +108,8 @@ function sortData(
 function convertToRowDataArray(recipes: Recipe[] | undefined): RowData[] {
   return (
     recipes?.map((recipe) => {
-      const { name, nameKana, genre } = recipe
-      return { name, nameKana, genre }
+      const { name, nameKana, genre, price, kcal, ingredientIds } = recipe
+      return { name, nameKana, genre, price, kcal, ingredientIds }
     }) ?? []
   )
 }
@@ -147,6 +147,8 @@ export const RecipesTable = () => {
       <td>{row.name}</td>
       <td>{row.nameKana}</td>
       <td>{row.genre}</td>
+      <td>{row.price}</td>
+      <td>{row.kcal}</td>
     </tr>
   ))
 
@@ -186,6 +188,20 @@ export const RecipesTable = () => {
               onSort={() => setSorting('genre')}
             >
               ジャンル
+            </Th>
+            <Th
+              sorted={sortBy === 'price'}
+              reversed={reverseSortDirection}
+              onSort={() => setSorting('price')}
+            >
+              価格
+            </Th>
+            <Th
+              sorted={sortBy === 'kcal'}
+              reversed={reverseSortDirection}
+              onSort={() => setSorting('kcal')}
+            >
+              カロリー
             </Th>
           </tr>
         </thead>
