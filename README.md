@@ -11,6 +11,10 @@ https://cigar-recipes-frontend.vercel.app
 email: user1@test.com
 password: user1
 
+## 技術構成
+
+Next.js / TypeScript / Mantine UI
+
 ## 仕様
 
 - 料理は、以下の項目を持っています。
